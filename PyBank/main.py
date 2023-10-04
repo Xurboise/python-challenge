@@ -3,8 +3,7 @@ import csv
 months = []
 profLoss = []
 change = []
-csvpath = os.path.join('GitHub','python-challenge','PyBank', 'Resources', 'budget_data.csv')
-#C:\Users\etchb\Documents\GitHub\python-challenge\PyBank\Resources\budget_data.csv
+csvpath = os.path.join('PyBank', 'Resources', 'budget_data.csv')
 
 with open(csvpath) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
@@ -38,13 +37,11 @@ print(f"Greatest Increase in Profit: {increaseDate} (${increaseNum})")
 print(f"Greatest Decrease in Profit: {decreaseDate} (${decreaseNum})")
 
 output = os.path.join('PyBank', 'analysis', 'analysis.txt')
-#output_file = os.path.join("output.csv") but to text
 with open(output, 'w') as txtfile:
-    txtwriter = csv.writer(txtfile, delimiter=',')
-    txtwriter.writerow("Finacial Analysis")
-    txtwriter.writerow("----------------------------")
-    txtwriter.writerow(f"Total Months: {len(months)}")
-    txtwriter.writerow(f"Total: ${total}")
-    txtwriter.writerow(f"Average Change: ${round(average, 2)}")
-    txtwriter.writerow(f"Greatest Increase in Profit: {increaseDate} (${increaseNum})")
-    txtwriter.writerow(f"Greatest Decrease in Profit: {decreaseDate} (${decreaseNum})")
+    txtfile.writelines("Finacial Analysis\n")
+    txtfile.writelines("----------------------------\n")
+    txtfile.writelines(f"Total Months: {len(months)}\n")
+    txtfile.writelines(f"Total: ${total}\n")
+    txtfile.writelines(f"Average Change: ${round(average, 2)}\n")
+    txtfile.writelines(f"Greatest Increase in Profit: {increaseDate} (${increaseNum})\n")
+    txtfile.writelines(f"Greatest Decrease in Profit: {decreaseDate} (${decreaseNum})")
